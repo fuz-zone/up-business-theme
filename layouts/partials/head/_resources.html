@@ -1,0 +1,48 @@
+<!-- Stylesheets -->
+{{- $sliceSCSS := slice -}}
+
+<!-- Load Shared SCSS -->
+{{- $resourceSharedSCSS := resources.Get "scss/shared/shared.scss" -}}
+
+{{- if $resourceSharedSCSS }}
+  {{- $sharedSCSS := $resourceSharedSCSS | resources.ToCSS (dict "outputStyle" "compressed" "includePaths" (slice "node_modules")) -}}
+  {{- $sliceSCSS = $sliceSCSS | append $sharedSCSS -}}
+{{- end -}}
+
+{{- $uniquescssid := "" -}}
+{{- with .File -}}
+  {{- $uniquescssid = .File.UniqueID -}}
+{{- end -}}
+
+{{- $bundleSCSS := (uniq $sliceSCSS) | resources.Concat (printf "css/style-%s.css" $uniquescssid) -}}
+{{- $secureSCSS := $bundleSCSS | resources.Minify | resources.Fingerprint "sha256" -}}
+
+{{- if .Site.Params.postProcess -}}
+  {{- $secureSCSS = $secureSCSS | resources.PostCSS -}}
+  {{- $secureSCSS = $secureSCSS | resources.PostProcess -}}
+{{- end -}}
+
+<!-- JavaScript -->
+{{- $sliceJS := slice -}}
+
+<!-- Load Shared JS -->
+{{- $resourceSharedJS := resources.Get "js/shared/shared.js" -}}
+
+{{- if $resourceSharedJS -}}
+  {{- $buildSharedJS := $resourceSharedJS | js.Build (dict "minify" "true") -}}
+  {{- $sliceJS = $sliceJS | append $buildSharedJS -}}
+{{- end -}}
+
+{{- $uniquejsid := "" -}}
+{{- with .File -}}
+  {{- $uniquejsid = .File.UniqueID -}}
+{{- end -}}
+
+{{- $bundleJS := (uniq $sliceJS) | resources.Concat (printf "js/script-%s.js" $uniquejsid) -}}
+{{- $secureJS := $bundleJS | resources.Minify | resources.Fingerprint "sha256" -}}
+
+<!-- Create the Content Policy and Inject CSS and JS Inline -->
+<!-- <meta http-equiv="Content-Security-Policy" content="script-src '{{ $secureSCSS.Data.Integrity }}' '{{ $secureJS.Data.Integrity }}'"> -->
+
+<style type="text/css" media="all">{{ $secureSCSS.Content | safeCSS }}</style>
+<script>{{- $secureJS.Content | safeJS -}}</script>
