@@ -16,7 +16,7 @@
 
 {{- $bundleSCSS := (uniq $sliceSCSS) | resources.Concat (printf "css/style-%s.css" $uniquescssid) -}}
 {{- $secureSCSS := $bundleSCSS | resources.Minify | resources.Fingerprint "sha256" -}}
-{{- $secureSCSS = $secureSCSS | resources.ExecuteAsTemplate $secureSCSS -}}
+{{- $secureSCSS = $secureSCSS | resources.ExecuteAsTemplate "main.css" . $secureSCSS -}}
 
 {{- if .Site.Params.postProcess -}}
   {{- $secureSCSS = $secureSCSS | resources.PostCSS -}}
