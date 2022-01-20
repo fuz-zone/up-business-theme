@@ -5,8 +5,10 @@ variables:
 
 pages:
   script:
+  - mkdir .temp
+  - mv * .temp/
   - mkdir themes/ && mkdir themes/up-business-theme/
-  - 'mv !(themes) themes/up-business-themes/'
+  - mv .temp/* themes/up-business-themes/
   - hugo --gc --baseURL https://writeonlyhugo.gitlab.io/up-business-theme/
   artifacts:
     paths:
