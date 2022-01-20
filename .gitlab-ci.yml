@@ -6,7 +6,6 @@ variables:
 pages:
   script:
   - cp -rf ./hugoBasicExample/* ./
-  - npm install
   - hugo
   artifacts:
     paths:
