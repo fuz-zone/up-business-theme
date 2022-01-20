@@ -9,6 +9,8 @@ pages:
   - mv * .temp/
   - mkdir themes/ && mkdir themes/up-business-theme/
   - mv .temp/* themes/up-business-theme/
+  - rm -rf .temp
+  - cp -rf themes/up-business-theme/hugoBasicExample/* ./
   - hugo --gc --baseURL https://writeonlyhugo.gitlab.io/up-business-theme/
   artifacts:
     paths:
