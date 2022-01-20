@@ -5,7 +5,10 @@ variables:
 
 pages:
   script:
-  - cp -rf hugoBasicExample/* ./
+  - mkdir themes/
+  - mkdir themes/up-business-theme/
+  - mv -rf * themes/up-business-theme/
+  - cp -rf themes/up-business-theme/hugoBasicExample/* ./
   - hugo --gc --baseURL https://writeonlyhugo.gitlab.io/up-business-theme/
   artifacts:
     paths:
