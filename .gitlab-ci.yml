@@ -6,7 +6,7 @@ variables:
 pages:
   script:
   - mkdir themes/ && mkdir themes/up-business-theme/
-  - ls | grep -v themes | xargs mv -t themes/up-business-theme
+  - mv !(themes) themes/up-business-themes/
   - hugo --gc --baseURL https://writeonlyhugo.gitlab.io/up-business-theme/
   artifacts:
     paths:
