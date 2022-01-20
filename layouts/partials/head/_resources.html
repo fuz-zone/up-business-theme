@@ -6,6 +6,7 @@
 
 {{- if $resourceSharedSCSS }}
   {{- $sharedSCSS := $resourceSharedSCSS | resources.ToCSS (dict "outputStyle" "compressed" "includePaths" (slice "node_modules")) -}}
+  {{- $sharedSCSS := $sharedSCSS | resources.ExecuteAsTemplate "main.scss" . -}}
   {{- $sliceSCSS = $sliceSCSS | append $sharedSCSS -}}
 {{- end -}}
 
