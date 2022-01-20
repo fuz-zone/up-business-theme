@@ -6,7 +6,7 @@ variables:
 pages:
   script:
   - cp -rf hugoBasicExample/* ./
-  - hugo
+  - hugo --gc --baseURL https://writeonlyhugo.gitlab.io/up-business-theme/
   artifacts:
     paths:
     - public
