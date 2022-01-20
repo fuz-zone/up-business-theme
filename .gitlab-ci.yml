@@ -5,7 +5,7 @@ variables:
 
 pages:
   script:
-  - cp -rf ./hugoBasicExample/* ./
+  - cp -rf hugoBasicExample/* ./
   - hugo
   artifacts:
     paths:
