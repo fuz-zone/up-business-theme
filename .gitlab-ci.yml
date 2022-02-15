@@ -1,4 +1,6 @@
-image: klakegg/hugo:0.91.2-ext-ubuntu
+image: 
+  name: klakegg/hugo:0.91.2-ext-ubuntu
+  entrypoint: ["/bin/sh", "-c"]    # possible fix
 
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
