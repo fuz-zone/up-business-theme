@@ -1,4 +1,4 @@
-image: https://github.com/klakegg/0.91.2-ext-ubuntu
+image: docker pull klakegg/hugo:0.91.2-ext-ubuntu
 
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
