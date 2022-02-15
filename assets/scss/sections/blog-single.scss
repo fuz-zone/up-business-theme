@@ -2,7 +2,9 @@
   max-width: 900px;
 
   .highlight {
-    padding: 16px;
-    border-radius: 8px;
+    pre {
+      padding: 16px;
+      border-radius: 8px;
+    }
   }
 }
