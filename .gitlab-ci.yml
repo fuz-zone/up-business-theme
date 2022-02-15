@@ -14,6 +14,7 @@ pages:
   - rm -rf .temp
   - cp -rf themes/up-business-theme/hugoBasicExample/* ./
   - npm install
+  - ls
   - hugo --gc --baseURL https://writeonlyhugo.gitlab.io/up-business-theme/
   artifacts:
     paths:
