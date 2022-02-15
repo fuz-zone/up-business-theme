@@ -1,10 +1,10 @@
 name = "Up Business Theme"
 license = "MIT"
-licenselink = ""
+licenselink = "https://gitlab.com/writeonlyhugo/up-business-theme/-/blob/master/LICENSE"
 description = "A clean and modern landing page website inspired by clean and modern illustrations."
 
-homepage = "https://gitlab.com/writeonlyhugo/up-business-theme"
-demosite = ""
+homepage = "https://gitlab.com/writeonlyhugo/up-business-theme/"
+demosite = "https://writeonlyhugo.gitlab.io/up-business-theme/"
 
 tags = ["landing page", "clean", "modern"]
 features = []
