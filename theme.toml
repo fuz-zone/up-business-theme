@@ -4,7 +4,7 @@ licenselink = "https://gitlab.com/writeonlyhugo/up-business-theme/-/blob/master/
 description = "A clean and modern landing page website inspired by clean and modern illustrations."
 
 homepage = "https://gitlab.com/writeonlyhugo/up-business-theme/"
-demosite = "https://writeonlyhugo.gitlab.io/up-business-theme/"
+demosite = "https://writeonlyhugo.gitlab.io/up-business-demo/"
 
 tags = ["landing page", "clean", "modern"]
 features = []
