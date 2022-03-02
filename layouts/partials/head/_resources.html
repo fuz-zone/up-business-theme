@@ -1,49 +1,11 @@
-<!-- Stylesheets -->
-{{- $sliceSCSS := slice -}}
-
 <!-- Load Shared SCSS -->
-{{- $resourceSharedSCSS := resources.Get "scss/shared/shared.scss" -}}
-
-{{- if $resourceSharedSCSS }}
-  {{- $sharedSCSS := $resourceSharedSCSS | resources.ToCSS (dict "outputStyle" "compressed" "includePaths" (slice "node_modules")) -}}
-  {{- $sharedSCSS := $sharedSCSS | resources.ExecuteAsTemplate "main.scss" . -}}
-  {{- $sliceSCSS = $sliceSCSS | append $sharedSCSS -}}
-{{- end -}}
-
-{{- $uniquescssid := "" -}}
-{{- with .File -}}
-  {{- $uniquescssid = .File.UniqueID -}}
-{{- end -}}
-
-{{- $bundleSCSS := (uniq $sliceSCSS) | resources.Concat (printf "css/style-%s.css" $uniquescssid) -}}
-{{- $secureSCSS := $bundleSCSS | resources.Minify | resources.Fingerprint "sha256" -}}
-
-{{- if .Site.Params.postProcess -}}
-  {{- $secureSCSS = $secureSCSS | resources.PostCSS -}}
-  {{- $secureSCSS = $secureSCSS | resources.PostProcess -}}
-{{- end -}}
-
-<!-- JavaScript -->
-{{- $sliceJS := slice -}}
+{{- $sharedSCSS := resources.Get "scss/shared/shared.scss" -}}
+{{- $sharedSCSS := $sharedSCSS | resources.ToCSS (dict "outputStyle" "compressed" "includePaths" (slice "assets/vendor")) -}}
+{{- $sharedSCSS := $sharedSCSS | resources.ExecuteAsTemplate "main.scss" . -}}
 
 <!-- Load Shared JS -->
-{{- $resourceSharedJS := resources.Get "js/shared/shared.js" -}}
+{{- $sharedJS := resources.Get "js/shared/shared.js" -}}
+{{- $sharedJS := $sharedJS | js.Build (dict "minify" "true") -}}
 
-{{- if $resourceSharedJS -}}
-  {{- $buildSharedJS := $resourceSharedJS | js.Build (dict "minify" "true") -}}
-  {{- $sliceJS = $sliceJS | append $buildSharedJS -}}
-{{- end -}}
-
-{{- $uniquejsid := "" -}}
-{{- with .File -}}
-  {{- $uniquejsid = .File.UniqueID -}}
-{{- end -}}
-
-{{- $bundleJS := (uniq $sliceJS) | resources.Concat (printf "js/script-%s.js" $uniquejsid) -}}
-{{- $secureJS := $bundleJS | resources.Minify | resources.Fingerprint "sha256" -}}
-
-<!-- Create the Content Policy and Inject CSS and JS Inline -->
-<!-- <meta http-equiv="Content-Security-Policy" content="script-src '{{ $secureSCSS.Data.Integrity }}' '{{ $secureJS.Data.Integrity }}'"> -->
-
-<style type="text/css" media="all">{{ $secureSCSS.Content | safeCSS }}</style>
-<script>{{- $secureJS.Content | safeJS -}}</script>
+<style type="text/css" media="all">{{ $sharedSCSS.Content | safeCSS }}</style>
+<script>{{- $sharedJS.Content | safeJS -}}</script>
