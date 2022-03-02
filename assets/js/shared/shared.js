@@ -1,4 +1,4 @@
-import "../vendor/bootstrap/bootstrap";
+import "./_bootstrap";
 
 import "./_header";
 import "./_footer";

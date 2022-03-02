@@ -2,6 +2,3 @@ module:
   module.hugoVersion:
     extended: true
     min: "0.88.1"
-
-  imports:
-   - path: github.com/twbs/bootstrap
