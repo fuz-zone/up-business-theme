@@ -37,8 +37,6 @@ params:
 
   copyright: "© 2022 Up Business All Rights Reserved"
 
-  postProcess: false
-
 menus:
   main:
     - name: "Home"
@@ -91,6 +89,3 @@ menus:
 taxonomies:
   series: "series"
   tags: "tags"
-
-build:
-  writeStats: false
