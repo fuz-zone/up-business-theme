@@ -6,7 +6,7 @@ description = "A clean and modern landing page website inspired by clean and mod
 homepage = "https://gitlab.com/writeonlyhugo/up-business-theme/"
 demosite = "https://writeonlyhugo.gitlab.io/up-business-demo/"
 
-tags = ["landing", "blog", "clean", "modern"]
+tags = ["blog", "responsive", "personal", "light", "bootstrap", "portfolio", "landing", "company", "modern"]
 features = []
 
 [author]

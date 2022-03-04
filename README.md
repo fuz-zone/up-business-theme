@@ -18,9 +18,6 @@ clone the demo website.
 git clone https://gitlab.com/writeonlyhugo/up-business-demo.git
 ```
 
-You also need to run `npm install` to install the dependencies before you can
-build the website or run the server.
-
 Alternatively, you can clone just the theme to your theme folder:
 
 ```bash
@@ -34,4 +31,4 @@ project folder to get an initial version of the website up and running.
 
 ## License 
 
-Coder is licensed under the MIT license.
+Up Business is licensed under the MIT license.
