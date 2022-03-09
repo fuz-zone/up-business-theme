@@ -1,12 +1,12 @@
-name = "Write-Only Hugo Theme"
+name = "Up Business Theme"
 license = "MIT"
-licenselink = "https://gitlab.com/writeonlyhugo/writeonlyhugo-theme/-/blob/master/LICENSE"
-description = "A simple, clean and straightforward blog theme."
+licenselink = "https://gitlab.com/writeonlyhugo/up-business-theme/-/blob/master/LICENSE"
+description = "A clean and modern landing page website inspired by clean and modern illustrations."
 
-homepage = "https://gitlab.com/writeonlyhugo/writeonlyhugo-theme/"
-demosite = "https://writeonlyhugo.gitlab.io/writeonlyhugo-demo/"
+homepage = "https://gitlab.com/writeonlyhugo/up-business-theme/"
+demosite = "https://writeonlyhugo.gitlab.io/up-business-demo/"
 
-tags = ["blog", "responsive", "personal", "light", "bootstrap" ]
+tags = ["blog", "responsive", "personal", "light", "bootstrap", "portfolio", "landing", "company", "modern"]
 features = []
 
 [author]
