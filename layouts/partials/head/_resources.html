@@ -2,10 +2,18 @@
 {{- $sharedSCSS := resources.Get "scss/shared/shared.scss" -}}
 {{- $sharedSCSS := $sharedSCSS | resources.ToCSS (dict "outputStyle" "compressed" "includePaths" (slice "assets")) -}}
 {{- $sharedSCSS := $sharedSCSS | resources.ExecuteAsTemplate "main.scss" . -}}
+<style type="text/css" media="all">{{ $sharedSCSS.Content | safeCSS }}</style>
 
 <!-- Load Shared JS -->
 {{- $sharedJS := resources.Get "js/shared/shared.js" -}}
 {{- $sharedJS := $sharedJS | js.Build (dict "minify" "true") -}}
-
-<style type="text/css" media="all">{{ $sharedSCSS.Content | safeCSS }}</style>
 <script>{{- $sharedJS.Content | safeJS -}}</script>
+
+<!-- Fonts -->
+{{- $bootstrapIcons := resources.Get "bootstrap-icons/font/bootstrap-icons.scss" -}}
+<style type="text/css" media="all">{{ $bootstrapIcons.Content | safeCSS }}</style>
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Domine:wght@400;500;600;700&display=swap" rel="stylesheet">
+
